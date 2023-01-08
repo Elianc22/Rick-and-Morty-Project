@@ -1,10 +1,10 @@
 import './App.css';
-import Father from './components/father';
+import Layout from './components/layout';
 
 function App() {
   return (
     <div className="App">
-      <Father></Father>
+      <Layout></Layout>
     </div>
   );
 }
