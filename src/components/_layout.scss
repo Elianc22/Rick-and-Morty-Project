@@ -1,0 +1,5 @@
+@use "../styles/baseStyle";
+
+.layout-container {
+    @include baseStyle.base-center();
+}
