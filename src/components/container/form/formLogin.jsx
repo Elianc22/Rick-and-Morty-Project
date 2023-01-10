@@ -2,6 +2,7 @@ import React from 'react';
 import '../form/_formStyles.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Spinner from 'react-bootstrap/Spinner';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -61,9 +62,8 @@ const Formlogin = () => {
             </div>
             <div>
               <button className="btn-form" type="submit">
-                Log in
+                {isSubmitting ? <Spinner animation="border" /> : 'Log in'}
               </button>
-              {isSubmitting ? <p>Login your credentials...</p> : null}
             </div>
           </Form>
         )}
