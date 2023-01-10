@@ -1,4 +1,5 @@
 import './App.css';
+import './styles/media.scss';
 import Layout from './components/layout';
 
 function App() {

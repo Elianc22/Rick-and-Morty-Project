@@ -1,0 +1,85 @@
+import React from 'react';
+import '../form/_formStyles.scss';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const loginSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email format').required('Email is required'),
+  password: Yup.string().required('Password is required')
+});
+
+const Formlogin = () => {
+  const initialCredentials = {
+    email: '',
+    password: ''
+  };
+
+  return (
+    <div className="container-login">
+      <div>
+        <h1>Rick and Morty</h1>
+        <h4>Login into your account</h4>
+      </div>
+      <Formik
+        // *** Initial values that the form will take ***
+        initialValues={initialCredentials}
+        // *** Yup Validation Schema ***
+        validationSchema={loginSchema}
+        // *** onSubmit Event ***
+        onSubmit={async (values) => {
+          await new Promise((r) => setTimeout(r, 1000));
+          alert(JSON.stringify(values, null, 2));
+          // *** We save the data in the localStorage ***
+          localStorage.setItem('credentials', values);
+        }}>
+        {/* We obtain props from FOrmik */}
+
+        {({ touched, errors, isSubmitting }) => (
+          <Form className="login-form">
+            <div>
+              <Field
+                className="form-inputs"
+                id="email"
+                name="email"
+                placeholder="Email"
+                type="email"
+              />
+
+              {/* Emails errors */}
+              {errors.email && touched.email && (
+                <ErrorMessage component="div" name="email"></ErrorMessage>
+              )}
+            </div>
+            <div>
+              <Field
+                className="form-inputs"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+
+              {/* Password errors */}
+              {errors.password && touched.password && (
+                <ErrorMessage component="div" name="password"></ErrorMessage>
+              )}
+            </div>
+            <div>
+              <a className="links-form" href="">
+                Forgot password
+              </a>
+            </div>
+            <div>
+              <button className="btn-form" type="submit">
+                Log in
+              </button>
+              {isSubmitting ? <p>Login your credentials...</p> : null}
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
+
+export default Formlogin;
