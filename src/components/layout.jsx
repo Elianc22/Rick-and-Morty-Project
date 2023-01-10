@@ -5,7 +5,7 @@ import './_layout.scss';
 const Layout = () => {
   return (
     <div className="layout-container">
-      <Formlogin></Formlogin>
+      <Formlogin />
     </div>
   );
 };

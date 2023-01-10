@@ -21,19 +21,13 @@ const Formlogin = () => {
         <h4>Login into your account</h4>
       </div>
       <Formik
-        // *** Initial values that the form will take ***
         initialValues={initialCredentials}
-        // *** Yup Validation Schema ***
         validationSchema={loginSchema}
-        // *** onSubmit Event ***
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 1000));
           alert(JSON.stringify(values, null, 2));
-          // *** We save the data in the localStorage ***
           localStorage.setItem('credentials', values);
         }}>
-        {/* We obtain props from FOrmik */}
-
         {({ touched, errors, isSubmitting }) => (
           <Form className="login-form">
             <div>
@@ -44,8 +38,6 @@ const Formlogin = () => {
                 placeholder="Email"
                 type="email"
               />
-
-              {/* Emails errors */}
               {errors.email && touched.email && (
                 <ErrorMessage component="div" name="email"></ErrorMessage>
               )}
@@ -58,8 +50,6 @@ const Formlogin = () => {
                 type="password"
                 placeholder="Password"
               />
-
-              {/* Password errors */}
               {errors.password && touched.password && (
                 <ErrorMessage component="div" name="password"></ErrorMessage>
               )}
