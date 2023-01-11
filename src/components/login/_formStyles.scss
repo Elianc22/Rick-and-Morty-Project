@@ -15,6 +15,7 @@
                 padding: 14px 70px 14px 10px;
                 border: none;
                 border-radius: 5px;
+                width: 100%;
 
                 &:hover, :focus {
                     outline: none;
@@ -37,6 +38,7 @@
             .btn-form {
                 margin-top: 15px;
                 @include baseStyle.base-btn();
+                width: 100%;
             }
         }
     }
