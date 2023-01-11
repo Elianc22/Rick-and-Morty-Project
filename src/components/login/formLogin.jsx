@@ -1,5 +1,5 @@
 import React from 'react';
-import '../form/_formStyles.scss';
+import './_formStyles.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Spinner from 'react-bootstrap/Spinner';
@@ -62,7 +62,11 @@ const Formlogin = () => {
             </div>
             <div>
               <button className="btn-form" type="submit">
-                {isSubmitting ? <Spinner animation="border" /> : 'Log in'}
+                {isSubmitting ? (
+                  <Spinner animation="border" role="status" size="sm" className="mt-0" />
+                ) : (
+                  'Log in'
+                )}
               </button>
             </div>
           </Form>

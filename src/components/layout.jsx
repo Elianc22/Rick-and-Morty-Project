@@ -1,5 +1,5 @@
 import React from 'react';
-import Formlogin from './container/form/formLogin';
+import Formlogin from './login/formLogin';
 import './_layout.scss';
 
 const Layout = () => {
