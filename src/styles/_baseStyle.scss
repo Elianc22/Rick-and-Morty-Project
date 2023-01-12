@@ -2,14 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
 @mixin base-form(){
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
 }
 
 @mixin base-btn() {
