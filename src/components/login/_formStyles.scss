@@ -1,45 +1,57 @@
 @use '../../styles/baseStyle';
 
 .container-login {
-    @include baseStyle.base-center();
-    flex-direction: column;
+    display: flex;
+    height: 100%;
+    
+    
 
-    .login-form {
-        @include baseStyle.base-form();
-        margin: 25px;
+    .container-form {
+        @include baseStyle.base-center();
+        flex-direction: column;
 
-        div {
-            margin-top: 20px;
+        .login-form {
+            @include baseStyle.base-form();
+            padding: 10%;
 
-            .form-inputs{
-                padding: 14px 70px 14px 10px;
-                border: none;
-                border-radius: 5px;
-                width: 100%;
+            div {
+                margin-top: 20px;
 
-                &:hover, :focus {
-                    outline: none;
-                    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .7);
+                .form-inputs{
+                    padding: 14px 70px 14px 10px;
+                    border: none;
+                    border-radius: 5px;
+                    width: 100%;
+
+                    &:hover, :focus {
+                        outline: none;
+                        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .7);
+                    }
                 }
-            }
 
-            .links-form {
-                display: flex;
-                justify-content: right;
-                font-size: 0.8rem;
-                text-decoration: none;
-                color: red;
+                .links-form {
+                    display: flex;
+                    justify-content: right;
+                    font-size: 0.8rem;
+                    text-decoration: none;
+                    color: red;
 
-                &:hover {
-                    color: rgb(223, 2, 2);
+                    &:hover {
+                        color: rgb(223, 2, 2);
+                    }
                 }
-            }
 
-            .btn-form {
-                margin-top: 15px;
-                @include baseStyle.base-btn();
-                width: 100%;
+                .btn-form {
+                    margin-top: 15px;
+                    @include baseStyle.base-btn();
+                    width: 100%;
+                }
             }
         }
+    }
+
+    .login-img{
+        width: 50%;
+        height: 100vh;
     }
 }
