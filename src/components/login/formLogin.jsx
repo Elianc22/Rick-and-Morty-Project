@@ -3,7 +3,7 @@ import './_formStyles.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Spinner from 'react-bootstrap/Spinner';
-import { isBrowser } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -17,8 +17,8 @@ const Formlogin = () => {
   };
 
   return (
-    <div className={`container-login ${isBrowser ? 'col-12' : ''}`}>
-      <div className={`container-form ${isBrowser ? 'col-6' : ''}`}>
+    <div className={`container-login ${isMobile ? '' : 'col-12'}`}>
+      <div className={`container-form ${isMobile ? '' : 'col-6'}`}>
         <div>
           <h1>Rick and Morty</h1>
           <h4>Login into your account</h4>
@@ -32,7 +32,7 @@ const Formlogin = () => {
             localStorage.setItem('credentials', values);
           }}>
           {({ touched, errors, isSubmitting }) => (
-            <Form className={`login-form ${isBrowser ? 'col-auto' : ''}`}>
+            <Form className={`login-form ${isMobile ? '' : 'col-auto'}`}>
               <div>
                 <Field
                   className="form-inputs"
@@ -76,12 +76,12 @@ const Formlogin = () => {
           )}
         </Formik>
       </div>
-      {isBrowser ? (
+      {isMobile ? null : (
         <img
           className="login-img"
           src="https://www.augsburger-allgemeine.de/img/panorama/crop59858091/385098565-cv1_1-w1200/Sky-Ticket-Rick-and-Morty.jpg"
           alt=""></img>
-      ) : null}
+      )}
     </div>
   );
 };
