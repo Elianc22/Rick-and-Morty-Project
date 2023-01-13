@@ -2,5 +2,6 @@
 
 .layout-container {
     @include baseStyle.base-center();
+    flex-direction: column;
     height: 100%;
 }

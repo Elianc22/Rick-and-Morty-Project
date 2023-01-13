@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+
+    .header-img {
+        height: 90px;
+        width: 90px;
+    }
+
+    .header-link {
+        height: 6%;
+        padding-top: 30px;
+        font-size: 15px;
+        text-decoration: none;
+        color: #54E174;
+        cursor: pointer;
+    }
+}
