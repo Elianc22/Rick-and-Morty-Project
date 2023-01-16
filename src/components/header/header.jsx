@@ -11,14 +11,8 @@ const Header = () => {
           src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png"
         />
       </div>
-      <div>
-        {isMobile ? (
-          <a className="header-link"> Sign up!</a>
-        ) : (
-          <p>
-            Don`t have an account? <a className="header-link"> Sign up!</a>
-          </p>
-        )}
+      <div className="header-link-container">
+        {isMobile ? '' : 'Don`t have an account? '} <a className="header-link"> Sign up!</a>
       </div>
     </header>
   );
