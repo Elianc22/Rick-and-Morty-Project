@@ -29,6 +29,12 @@
                     }
                 }
 
+                .icon-password {
+                    position: absolute;
+                    transform: translate(305px, -55px);
+                    cursor: pointer;
+                }
+
                 .links-form {
                     display: flex;
                     justify-content: right;

@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Spinner from 'react-bootstrap/Spinner';
 import { isMobile } from 'react-device-detect';
+import { useState } from 'react';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -11,6 +12,8 @@ const loginSchema = Yup.object().shape({
 });
 
 const Formlogin = () => {
+  const [showPwd, setShowPwd] = useState(false);
+
   const initialCredentials = {
     email: '',
     password: ''
@@ -50,10 +53,14 @@ const Formlogin = () => {
                   className="form-inputs"
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPwd ? 'text' : 'password'}
                   placeholder="Password"
                 />
-
+                {isMobile ? null : (
+                  <div className="icon-password" onClick={() => setShowPwd(!showPwd)}>
+                    {showPwd ? <i className="bi bi-eye"></i> : <i className="bi bi-eye-slash"></i>}
+                  </div>
+                )}
                 {errors.password && touched.password && (
                   <ErrorMessage component="div" name="password"></ErrorMessage>
                 )}
