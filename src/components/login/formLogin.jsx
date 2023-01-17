@@ -58,7 +58,8 @@ const Formlogin = () => {
                 />
                 {isMobile ? null : (
                   <div className="icon-password" onClick={() => setShowPwd(!showPwd)}>
-                    {showPwd ? <i className="bi bi-eye"></i> : <i className="bi bi-eye-slash"></i>}
+                    {/* <i className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-closed'}`}></i> */}
+                    {showPwd ? <i className="bi bi-eye" /> : <i className="bi bi-eye-slash" />}
                   </div>
                 )}
                 {errors.password && touched.password && (
