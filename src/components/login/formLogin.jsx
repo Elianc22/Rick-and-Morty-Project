@@ -48,7 +48,7 @@ const Formlogin = () => {
                   <ErrorMessage component="div" name="email"></ErrorMessage>
                 )}
               </div>
-              <div>
+              <div className="container-input-password">
                 <Field
                   className="form-inputs"
                   id="password"
@@ -56,12 +56,10 @@ const Formlogin = () => {
                   type={showPwd ? 'text' : 'password'}
                   placeholder="Password"
                 />
-                {isMobile ? null : (
-                  <div className="icon-password" onClick={() => setShowPwd(!showPwd)}>
-                    {/* <i className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-closed'}`}></i> */}
-                    {showPwd ? <i className="bi bi-eye" /> : <i className="bi bi-eye-slash" />}
-                  </div>
-                )}
+                <div className="icon-password" onClick={() => setShowPwd(!showPwd)}>
+                  {/* <i className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-closed'}`}></i> */}
+                  {showPwd ? <span className="bi bi-eye" /> : <span className="bi bi-eye-slash" />}
+                </div>
                 {errors.password && touched.password && (
                   <ErrorMessage component="div" name="password"></ErrorMessage>
                 )}

@@ -14,6 +14,18 @@
             @include baseStyle.base-form();
             padding: 10%;
 
+            .container-input-password {
+                display: flex;
+                align-items: center;
+
+                .icon-password {
+                    position: absolute;
+                    cursor: pointer;
+                    right: 28%;
+                }
+
+            }
+
             div {
                 margin-top: 20px;
 
@@ -27,12 +39,6 @@
                         outline: none;
                         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .7);
                     }
-                }
-
-                .icon-password {
-                    position: absolute;
-                    transform: translate(1850%, -230%);
-                    cursor: pointer;
                 }
 
                 .links-form {
