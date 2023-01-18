@@ -56,10 +56,11 @@ const Formlogin = () => {
                   type={showPwd ? 'text' : 'password'}
                   placeholder="Password"
                 />
-                <div className="icon-password" onClick={() => setShowPwd(!showPwd)}>
-                  {/* <i className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-closed'}`}></i> */}
-                  {showPwd ? <span className="bi bi-eye" /> : <span className="bi bi-eye-slash" />}
-                </div>
+                <span
+                  className={`icon-password bi ${showPwd ? 'bi-eye' : 'bi-eye-slash'} ${
+                    isMobile ? null : 'icon-password-desktop'
+                  }`}
+                  onClick={() => setShowPwd(!showPwd)}></span>
                 {errors.password && touched.password && (
                   <ErrorMessage component="div" name="password"></ErrorMessage>
                 )}
