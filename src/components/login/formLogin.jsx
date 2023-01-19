@@ -56,9 +56,7 @@ const Formlogin = () => {
                   type={showPwd ? 'text' : 'password'}
                   placeholder="Password"
                 />
-                <span
-                  className={`icon-password ${isMobile ? null : 'icon-password-desktop'}`}
-                  onClick={() => setShowPwd(!showPwd)}>
+                <span className="icon-password" onClick={() => setShowPwd(!showPwd)}>
                   <i
                     className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-slash'} 
                     }`}

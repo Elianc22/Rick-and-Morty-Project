@@ -17,15 +17,12 @@
             .container-input-password {
                 display: flex;
                 align-items: center;
+                position: relative;
 
                 .icon-password {
                     position: absolute;
                     cursor: pointer;
-                    right: 15%;
-                }
-
-                .icon-password-desktop {
-                    right: 65%;
+                    right: 5%;
                 }
             }
 
