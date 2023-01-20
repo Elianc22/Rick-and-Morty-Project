@@ -1,0 +1,64 @@
+@use '../../styles/baseStyle';
+
+.container-login {
+    display: flex;
+    height: 100%;
+    
+    
+
+    .container-form {
+        @include baseStyle.base-center();
+        flex-direction: column;
+
+        .login-form {
+            @include baseStyle.base-form();
+            padding: 10%;
+
+            .container-input-password {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                .icon-password {
+                    position: absolute;
+                    cursor: pointer;
+                    right: 5%;
+                }
+            }
+
+
+            div {
+                margin-top: 20px;
+
+                .form-inputs{
+                    padding: 14px 70px 14px 10px;
+                    border: none;
+                    border-radius: 5px;
+                    width: 100%;
+
+                    &:hover, :focus {
+                        outline: none;
+                        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .7);
+                    }
+                }
+
+                .btn-form {
+                    margin-top: 15px;
+                    @include baseStyle.base-btn();
+                    width: 100%;
+                    border: none;
+                    background-color: rgb(32,220,73);
+
+                    &:hover {
+                        background-color: rgb(9, 172, 45);
+                    }
+                }
+            }
+        }
+    }
+
+    .login-img{
+        width: 50%;
+        height: 100vh;
+    }
+}
