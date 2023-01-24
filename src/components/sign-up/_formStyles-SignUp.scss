@@ -1,6 +1,6 @@
 @use '../../styles/baseStyle';
 
-.container-login {
+.container-signup {
     display: flex;
     height: 100%;
     
@@ -10,7 +10,7 @@
         @include baseStyle.base-center();
         flex-direction: column;
 
-        .login-form {
+        .signup-form {
             @include baseStyle.base-form();
             padding: 10%;
 
@@ -57,7 +57,7 @@
         }
     }
 
-    .login-img{
+    .signup-img{
         width: 50%;
         height: 100vh;
     }
