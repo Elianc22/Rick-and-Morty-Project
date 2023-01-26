@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './_header.scss';
 import { isMobile } from 'react-device-detect';
 
@@ -12,7 +13,11 @@ const Header = () => {
         />
       </div>
       <div className="header-link-container">
-        {isMobile ? '' : 'Don`t have an account? '} <a className="header-link"> Sign up!</a>
+        {isMobile ? '' : 'Don`t have an account? '}{' '}
+        <Link to={'/sign-up'} className="header-link">
+          {' '}
+          Sign up!
+        </Link>
       </div>
     </header>
   );

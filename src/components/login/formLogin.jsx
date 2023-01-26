@@ -1,6 +1,6 @@
 import React from 'react';
 import './_formStyles.scss';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import Spinner from 'react-bootstrap/Spinner';
 import { isMobile } from 'react-device-detect';
@@ -27,6 +27,8 @@ const Formlogin = () => {
           <h4>Login into your account</h4>
         </div>
         <Formik
+          validateOnChange={false}
+          validateOnBlur={false}
           initialValues={initialCredentials}
           validationSchema={loginSchema}
           onSubmit={async (values) => {
@@ -34,7 +36,7 @@ const Formlogin = () => {
             alert(JSON.stringify(values, null, 2));
             localStorage.setItem('credentials', values);
           }}>
-          {({ touched, errors, isSubmitting }) => (
+          {({ errors, isSubmitting }) => (
             <Form className={`login-form ${isMobile ? '' : 'col-auto'}`}>
               <div>
                 <Field
@@ -44,9 +46,7 @@ const Formlogin = () => {
                   placeholder="Email"
                   type="email"
                 />
-                {errors.email && touched.email && (
-                  <ErrorMessage component="div" name="email"></ErrorMessage>
-                )}
+                <span style={{ color: 'red' }}>{errors.email}</span>
               </div>
               <div className="container-input-password">
                 <Field
@@ -62,9 +62,7 @@ const Formlogin = () => {
                     }`}
                   />
                 </span>
-                {errors.password && touched.password && (
-                  <ErrorMessage component="div" name="password"></ErrorMessage>
-                )}
+                <span style={{ color: 'red' }}>{errors.password}</span>
               </div>
               <div>
                 <a className="links-form" href="">
