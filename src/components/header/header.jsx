@@ -13,9 +13,8 @@ const Header = () => {
         />
       </div>
       <div className="header-link-container">
-        {isMobile ? '' : 'Don`t have an account? '}{' '}
+        {isMobile ? '' : 'Don`t have an account? '}
         <Link to={'/sign-up'} className="header-link">
-          {' '}
           Sign up!
         </Link>
       </div>
