@@ -18,10 +18,22 @@ $headerHeight: 75px;
         height: 100%;
     }
 
-    .header-link-container {
+    .header-link-login {
         color:  rgb(240,242,245);
 
         .header-link {
+            font-weight: bold;
+            font-size: 15px;
+            text-decoration: none;
+            color: #8FC845;
+            cursor: pointer;
+        }
+    }
+
+    .header-link-signup {
+        color: black;
+
+        .header-link{
             font-weight: bold;
             font-size: 15px;
             text-decoration: none;

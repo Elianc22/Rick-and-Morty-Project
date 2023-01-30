@@ -43,7 +43,7 @@ const Formsignup = () => {
             <Form className={`signup-form ${isMobile ? '' : 'col-auto'}`}>
               <div className="container-div">
                 <Input
-                  className={'form-inputs'}
+                  className="form-inputs"
                   id={'name'}
                   name={'name'}
                   placeholder={'Full name'}
@@ -53,7 +53,7 @@ const Formsignup = () => {
               </div>
               <div className="container-div">
                 <Input
-                  className={'form-inputs'}
+                  className="form-inputs"
                   id={'email'}
                   name={'email'}
                   placeholder={'Email'}

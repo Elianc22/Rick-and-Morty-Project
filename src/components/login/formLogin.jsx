@@ -2,9 +2,9 @@ import React from 'react';
 import './_formStyles.scss';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import Spinner from 'react-bootstrap/Spinner';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
+import { Button } from '../commons/button';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -36,9 +36,9 @@ const Formlogin = () => {
             alert(JSON.stringify(values, null, 2));
             localStorage.setItem('credentials', values);
           }}>
-          {({ errors, isSubmitting }) => (
+          {({ errors }) => (
             <Form className={`login-form ${isMobile ? '' : 'col-auto'}`}>
-              <div>
+              <div className="container-div">
                 <Field
                   className="form-inputs"
                   id="email"
@@ -58,25 +58,19 @@ const Formlogin = () => {
                 />
                 <span className="icon-password" onClick={() => setShowPwd(!showPwd)}>
                   <i
-                    className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-slash'} 
+                    className={`bi ${showPwd ? 'bi-eye' : 'bi-eye-slash'}
                     }`}
                   />
                 </span>
-                <span style={{ color: 'red' }}>{errors.password}</span>
               </div>
+              <span style={{ color: 'red' }}>{errors.password}</span>
               <div>
                 <a className="links-form" href="">
                   Forgot password
                 </a>
               </div>
               <div>
-                <button className="btn-form" type="submit">
-                  {isSubmitting ? (
-                    <Spinner animation="border" role="status" size="sm" className="mt-0" />
-                  ) : (
-                    'Log in'
-                  )}
-                </button>
+                <Button type={'submit'} name={'Log in'} />
               </div>
             </Form>
           )}
