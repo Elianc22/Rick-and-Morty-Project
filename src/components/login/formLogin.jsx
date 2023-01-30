@@ -48,7 +48,7 @@ const Formlogin = () => {
                 />
                 <span style={{ color: 'red' }}>{errors.email}</span>
               </div>
-              <div className="container-input-password">
+              <div className="container-input-password container-div">
                 <Field
                   className="form-inputs"
                   id="password"
