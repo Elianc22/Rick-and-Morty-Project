@@ -4,10 +4,10 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
-import Image from '../../images/rick-and-morty.png';
 import { Button } from '../commons/button';
 import { Title } from '../commons/title';
 import { Input } from '../commons/input';
+import { Errors } from '../commons/erros';
 
 const registerSchema = Yup.object().shape({
   name: Yup.string().required('Full name is required'),
@@ -26,7 +26,7 @@ const Formsignup = () => {
 
   return (
     <div className={`container-signup ${isMobile ? '' : 'col-12'}`}>
-      {isMobile ? null : <img className="signup-img" src={Image} alt=""></img>}
+      {isMobile ? null : <img className="signup-img" src="/images/rick-and-morty.png" alt=""></img>}
       <div className={`container-form ${isMobile ? '' : 'col-6'}`}>
         <Title title={'Rick and Morty'} subtitle={'Sign up and join us!'} />
         <Formik
@@ -41,7 +41,7 @@ const Formsignup = () => {
           }}>
           {({ errors }) => (
             <Form className={`signup-form ${isMobile ? '' : 'col-auto'}`}>
-              <div className="container-div">
+              <div className="container-input-signup">
                 <Input
                   className="form-inputs"
                   id={'name'}
@@ -49,9 +49,9 @@ const Formsignup = () => {
                   placeholder={'Full name'}
                   type={'text'}
                 />
-                <span style={{ color: 'red' }}>{errors.name}</span>
+                <Errors error={errors.name} />
               </div>
-              <div className="container-div">
+              <div className="container-input-signup">
                 <Input
                   className="form-inputs"
                   id={'email'}
@@ -59,7 +59,7 @@ const Formsignup = () => {
                   placeholder={'Email'}
                   type={'email'}
                 />
-                <span style={{ color: 'red' }}>{errors.email}</span>
+                <Errors error={errors.name} />
               </div>
               <div className="container-input-password">
                 <Field
@@ -76,7 +76,7 @@ const Formsignup = () => {
                   />
                 </span>
               </div>
-              <span style={{ color: 'red' }}>{errors.password}</span>
+              <Errors error={errors.password} />
               <div>
                 <Button type={'submit'} name={'Create an account'} />
               </div>

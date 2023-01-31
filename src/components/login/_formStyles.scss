@@ -14,10 +14,8 @@
             @include baseStyle.base-form();
             padding: 10%;
 
-            .container-div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+            .container-input-login {
+                @include baseStyle.base-container-input();
             }
 
             .container-input-password {

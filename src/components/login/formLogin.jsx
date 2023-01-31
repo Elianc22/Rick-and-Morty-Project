@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
 import { Button } from '../commons/button';
+import { Errors } from '../commons/erros';
+import { Input } from '../commons/input';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -38,17 +40,17 @@ const Formlogin = () => {
           }}>
           {({ errors }) => (
             <Form className={`login-form ${isMobile ? '' : 'col-auto'}`}>
-              <div className="container-div">
-                <Field
+              <div className="container-input-login">
+                <Input
                   className="form-inputs"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  type="email"
+                  id={'email'}
+                  name={'email'}
+                  placeholder={'Email'}
+                  type={'email'}
                 />
-                <span style={{ color: 'red' }}>{errors.email}</span>
+                <Errors error={errors.email} />
               </div>
-              <div className="container-input-password container-div">
+              <div className="container-input-password container-input-login">
                 <Field
                   className="form-inputs"
                   id="password"
@@ -63,7 +65,7 @@ const Formlogin = () => {
                   />
                 </span>
               </div>
-              <span style={{ color: 'red' }}>{errors.password}</span>
+              <Errors error={errors.password} />
               <div>
                 <a className="links-form" href="">
                   Forgot password

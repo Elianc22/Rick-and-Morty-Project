@@ -3,8 +3,6 @@
 .container-signup {
     display: flex;
     height: 100%;
-    
-    
 
     .container-form {
         @include baseStyle.base-center();
@@ -14,10 +12,8 @@
             @include baseStyle.base-form();
             padding: 10%;
 
-            .container-div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+            .container-input-signup {
+                @include baseStyle.base-container-input();
             }
 
             .container-input-password {
@@ -31,7 +27,6 @@
                     right: 5%;
                 }
             }
-
 
             div {
                 margin-top: 20px;
