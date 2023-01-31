@@ -38,7 +38,7 @@ const Formlogin = () => {
             alert(JSON.stringify(values, null, 2));
             localStorage.setItem('credentials', values);
           }}>
-          {({ errors }) => (
+          {({ errors, isSubmitting }) => (
             <Form className={`login-form ${isMobile ? '' : 'col-auto'}`}>
               <div className="container-input-login">
                 <Input
@@ -72,7 +72,7 @@ const Formlogin = () => {
                 </a>
               </div>
               <div>
-                <Button type={'submit'} name={'Log in'} />
+                <Button isSubmitting={isSubmitting} type={'submit'} name={'Log in'} />
               </div>
             </Form>
           )}

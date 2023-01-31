@@ -39,7 +39,7 @@ const Formsignup = () => {
             alert(JSON.stringify(values, null, 2));
             localStorage.setItem('credentials', values);
           }}>
-          {({ errors }) => (
+          {({ errors, isSubmitting }) => (
             <Form className={`signup-form ${isMobile ? '' : 'col-auto'}`}>
               <div className="container-input-signup">
                 <Input
@@ -78,7 +78,7 @@ const Formsignup = () => {
               </div>
               <Errors error={errors.password} />
               <div>
-                <Button type={'submit'} name={'Create an account'} />
+                <Button isSubmitting={isSubmitting} type={'submit'} name={'Create an account'} />
               </div>
             </Form>
           )}
