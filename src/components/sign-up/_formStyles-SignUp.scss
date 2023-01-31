@@ -1,20 +1,18 @@
 @use '../../styles/baseStyle';
 
-.container-login {
+.container-signup {
     display: flex;
     height: 100%;
-    
-    
 
     .container-form {
         @include baseStyle.base-center();
         flex-direction: column;
 
-        .login-form {
+        .signup-form {
             @include baseStyle.base-form();
             padding: 10%;
 
-            .container-input-login {
+            .container-input-signup {
                 @include baseStyle.base-container-input();
             }
 
@@ -29,7 +27,6 @@
                     right: 5%;
                 }
             }
-
 
             div {
                 margin-top: 20px;
@@ -46,28 +43,22 @@
                     }
                 }
 
-                .links-form {
-                    display: flex;
-                    justify-content: right;
-                    font-size: 0.8rem;
-                    text-decoration: none;
-                    color: red;
-
-                    &:hover {
-                        color: rgb(223, 2, 2);
-                    }
-                }
-
                 .btn-form {
                     margin-top: 15px;
                     @include baseStyle.base-btn();
                     width: 100%;
+                    border: none;
+                    background-color: rgb(32,220,73);
+
+                    &:hover {
+                        background-color: rgb(9, 172, 45);
+                    }
                 }
             }
         }
     }
 
-    .login-img{
+    .signup-img{
         width: 50%;
         height: 100vh;
     }

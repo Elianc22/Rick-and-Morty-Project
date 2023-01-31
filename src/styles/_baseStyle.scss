@@ -21,3 +21,14 @@
             cursor: pointer;
         }
 }
+
+@mixin base-container-input(){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.errors-style {
+    color: red;
+    padding: 5px;
+}
