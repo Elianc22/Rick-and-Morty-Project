@@ -1,17 +1,23 @@
-fetch('https://sessions.cyclic.app/api', {
-  method: 'POST',
-  body: {
-    name: 'elian foo',
-    email: 'foo@fff',
-    password: 'sd334'
-  }
-})
-  .then((response) => {
-    return response.json();
+const API_URL = 'https://sessions.cyclic.app/api';
+
+const signUp = (endpoint, userName, userEmail, password) => {
+  return fetch(`${API_URL}/${endpoint}`, {
+    method: 'POST',
+    body: JSON.stringify({
+      fullname: userName,
+      email: userEmail,
+      password
+    })
   })
-  .then((json) => {
-    console.log(json);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      return json;
+    })
+    .catch((error) => {
+      throw new Error(`HTTP error! status: ${error}`);
+    });
+};
+
+export default signUp;

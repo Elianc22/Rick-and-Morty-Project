@@ -2,6 +2,7 @@ import React from 'react';
 import './_formStyles-SignUp.scss';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import signUp from '../../services/api';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
 import { Button } from '../commons/button';
@@ -35,9 +36,7 @@ const Formsignup = () => {
           initialValues={initialCredentials}
           validationSchema={registerSchema}
           onSubmit={async (values) => {
-            await new Promise((r) => setTimeout(r, 1000));
-            alert(JSON.stringify(values, null, 2));
-            localStorage.setItem('credentials', values);
+            await signUp('users', values.name, values.email, values.password);
           }}>
           {({ errors, isSubmitting }) => (
             <Form className={`signup-form ${isMobile ? '' : 'col-auto'}`}>
