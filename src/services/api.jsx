@@ -13,9 +13,6 @@ const signUp = (endpoint, userName, userEmail, password) => {
     .then((response) => {
       return response.json();
     })
-    .then((json) => {
-      return json;
-    })
     .catch((error) => {
       throw new Error(`HTTP error! status: ${error}`);
     });
