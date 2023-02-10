@@ -3,6 +3,7 @@ import './_formStyles-SignUp.scss';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import signUp from '../../services/api';
+import { Navigate } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
 import { Button } from '../commons/button';
@@ -38,8 +39,10 @@ const Formsignup = () => {
           validationSchema={registerSchema}
           onSubmit={async (values) => {
             const responseApi = await signUp('users', values.name, values.email, values.password);
-            if (!responseApi.success) {
+            if (responseApi.error) {
               setApiError(responseApi.error);
+            } else {
+              <Navigate to="/" />;
             }
           }}>
           {({ errors, isSubmitting }) => (
