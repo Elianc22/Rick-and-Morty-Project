@@ -18,6 +18,7 @@ const registerSchema = Yup.object().shape({
 
 const Formsignup = () => {
   const [showPwd, setShowPwd] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   const initialCredentials = {
     name: '',
@@ -36,7 +37,10 @@ const Formsignup = () => {
           initialValues={initialCredentials}
           validationSchema={registerSchema}
           onSubmit={async (values) => {
-            await signUp('users', values.name, values.email, values.password);
+            const responseApi = await signUp('users', values.name, values.email, values.password);
+            if (!responseApi.success) {
+              setApiError(responseApi.error);
+            }
           }}>
           {({ errors, isSubmitting }) => (
             <Form className={`signup-form ${isMobile ? '' : 'col-auto'}`}>
@@ -79,6 +83,7 @@ const Formsignup = () => {
               <div>
                 <Button isSubmitting={isSubmitting} type={'submit'} name={'Create an account'} />
               </div>
+              {apiError && <Errors error="An error has occurred, try again later." />}
             </Form>
           )}
         </Formik>
