@@ -2,6 +2,8 @@ import React from 'react';
 import './_formStyles-SignUp.scss';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import signUp from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
 import { Button } from '../commons/button';
@@ -17,6 +19,8 @@ const registerSchema = Yup.object().shape({
 
 const Formsignup = () => {
   const [showPwd, setShowPwd] = useState(false);
+  const [apiError, setApiError] = useState(false);
+  const navigate = useNavigate();
 
   const initialCredentials = {
     name: '',
@@ -35,9 +39,12 @@ const Formsignup = () => {
           initialValues={initialCredentials}
           validationSchema={registerSchema}
           onSubmit={async (values) => {
-            await new Promise((r) => setTimeout(r, 1000));
-            alert(JSON.stringify(values, null, 2));
-            localStorage.setItem('credentials', values);
+            const responseApi = await signUp('users', values.name, values.email, values.password);
+            if (responseApi.error) {
+              setApiError(responseApi.error);
+            } else {
+              navigate('/');
+            }
           }}>
           {({ errors, isSubmitting }) => (
             <Form className={`signup-form ${isMobile ? '' : 'col-auto'}`}>
@@ -80,6 +87,7 @@ const Formsignup = () => {
               <div>
                 <Button isSubmitting={isSubmitting} type={'submit'} name={'Create an account'} />
               </div>
+              {apiError && <Errors error="An error has occurred, try again later." />}
             </Form>
           )}
         </Formik>
