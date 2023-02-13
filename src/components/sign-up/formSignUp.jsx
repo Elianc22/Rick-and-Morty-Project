@@ -3,7 +3,7 @@ import './_formStyles-SignUp.scss';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import signUp from '../../services/api';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
 import { Button } from '../commons/button';
@@ -20,6 +20,7 @@ const registerSchema = Yup.object().shape({
 const Formsignup = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [apiError, setApiError] = useState(false);
+  const navigate = useNavigate();
 
   const initialCredentials = {
     name: '',
@@ -42,7 +43,7 @@ const Formsignup = () => {
             if (responseApi.error) {
               setApiError(responseApi.error);
             } else {
-              <Navigate to="/" />;
+              navigate('/');
             }
           }}>
           {({ errors, isSubmitting }) => (
