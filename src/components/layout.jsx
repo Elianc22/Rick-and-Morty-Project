@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './header/header';
-import Home from './home/home';
+import Home from './home/index';
 import Formlogin from './login/formLogin';
 import Formsignup from './sign-up/formSignUp';
 import './_layout.scss';
