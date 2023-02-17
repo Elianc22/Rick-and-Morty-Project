@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { Button } from '../commons/button';
 import { Errors } from '../commons/erros';
 import { Input } from '../commons/input';
+import logIn from '../../services/apiLogin';
+import { useNavigate } from 'react-router-dom';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -15,6 +17,8 @@ const loginSchema = Yup.object().shape({
 
 const Formlogin = () => {
   const [showPwd, setShowPwd] = useState(false);
+  const [apiError, setApiError] = useState(false);
+  const navigate = useNavigate();
 
   const initialCredentials = {
     email: '',
@@ -34,9 +38,12 @@ const Formlogin = () => {
           initialValues={initialCredentials}
           validationSchema={loginSchema}
           onSubmit={async (values) => {
-            await new Promise((r) => setTimeout(r, 1000));
-            alert(JSON.stringify(values, null, 2));
-            localStorage.setItem('credentials', values);
+            const responseApi = await logIn('sessions', values.email, values.password);
+            if (responseApi.error) {
+              setApiError(responseApi.error);
+            } else {
+              navigate('/home');
+            }
           }}>
           {({ errors, isSubmitting }) => (
             <Form className={`login-form ${isMobile ? '' : 'col-auto'}`}>
@@ -74,6 +81,7 @@ const Formlogin = () => {
               <div>
                 <Button isSubmitting={isSubmitting} type={'submit'} name={'Log in'} />
               </div>
+              {apiError && <Errors error="Wrong user or password" />}
             </Form>
           )}
         </Formik>

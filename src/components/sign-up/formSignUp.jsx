@@ -2,7 +2,7 @@ import React from 'react';
 import './_formStyles-SignUp.scss';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import signUp from '../../services/api';
+import signUp from '../../services/apiResgister';
 import { useNavigate } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { useState } from 'react';
@@ -66,7 +66,7 @@ const Formsignup = () => {
                   placeholder={'Email'}
                   type={'email'}
                 />
-                <Errors error={errors.name} />
+                <Errors error={errors.email} />
               </div>
               <div className="container-input-password">
                 <Field
