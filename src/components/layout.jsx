@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Protectroute from '../routes/protectRoutes';
 import Header from './header/header';
 import Home from './home/index';
 import Formlogin from './login/formLogin';
-import Privateroute from './privateRoutes';
+import Privateroute from '../routes/privateRoutes';
 import Formsignup from './sign-up/formSignUp';
 import './_layout.scss';
 
@@ -12,10 +13,24 @@ const Layout = () => {
     <div className="layout-container">
       <Header />
       <Routes>
-        <Route path="/" element={<Formlogin />} />
-        <Route path="/sign-up" element={<Formsignup />} />
         <Route
-          path="/home"
+          path="/log-in"
+          element={
+            <Protectroute>
+              <Formlogin />
+            </Protectroute>
+          }
+        />
+        <Route
+          path="/sign-up"
+          element={
+            <Protectroute>
+              <Formsignup />
+            </Protectroute>
+          }
+        />
+        <Route
+          path="/"
           element={
             <Privateroute>
               <Home />
