@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = (logedIn) => {
   const navigate = useNavigate();
   if (!logedIn) {
-    navigate('/login');
+    navigate('/');
   }
   return <div>Home</div>;
 };

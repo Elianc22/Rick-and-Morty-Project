@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './header/header';
 import Home from './home/index';
 import Formlogin from './login/formLogin';
+import Privateroute from './privateRoutes';
 import Formsignup from './sign-up/formSignUp';
 import './_layout.scss';
 
@@ -15,7 +16,7 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<Formlogin />} />
         <Route path="/sign-up" element={<Formsignup />} />
-        <Route path="/home" element={<Home logedIn />} />
+        <Privateroute path="/home" element={<Home logedIn />} />
       </Routes>
     </div>
   );
