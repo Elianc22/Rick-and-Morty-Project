@@ -42,7 +42,7 @@ const Formlogin = () => {
             if (responseApi.error) {
               setApiError(responseApi.error);
             } else {
-              navigate('/home');
+              return navigate('/home');
             }
           }}>
           {({ errors, isSubmitting }) => (

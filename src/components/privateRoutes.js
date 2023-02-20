@@ -1,11 +1,14 @@
-import { Route, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-let auth = !!localStorage.getItem('token');
+const auth = sessionStorage.token;
 
 // eslint-disable-next-line react/prop-types
-const Privateroute = ({ component, ...rest }) => {
-  const navigate = useNavigate();
-  return <Route {...rest}>{auth ? component : navigate('/')}</Route>;
+const Privateroute = ({ children }) => {
+  //   const navigate = useNavigate();
+  if (!auth) {
+    return <Navigate to="/" replace />;
+  }
+  return children;
 };
 
 export default Privateroute;

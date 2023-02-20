@@ -9,10 +9,10 @@ const logIn = (endpoint, userEmail, password) => {
       password
     })
   })
-    .then((response) => {
-      const data = response.json();
+    .then(async (response) => {
+      const data = await response.json();
       if (data.token) {
-        localStorage.setItem({ token: data.token });
+        sessionStorage.token = data.token;
       }
       return data;
     })
