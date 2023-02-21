@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Protectroute from '../routes/protectRoutes';
 import Header from './header/header';
 import Home from './home/index';
 import Formlogin from './login/formLogin';
-import Privateroute from '../routes/privateRoutes';
+import PrivateRoute from '../routes/privateRoutes';
 import Formsignup from './sign-up/formSignUp';
 import './_layout.scss';
+import ProtectRoute from '../routes/protectRoutes';
 
 const Layout = () => {
   return (
@@ -14,27 +14,27 @@ const Layout = () => {
       <Header />
       <Routes>
         <Route
-          path="/log-in"
+          path="/login"
           element={
-            <Protectroute>
+            <ProtectRoute>
               <Formlogin />
-            </Protectroute>
+            </ProtectRoute>
           }
         />
         <Route
           path="/sign-up"
           element={
-            <Protectroute>
+            <ProtectRoute>
               <Formsignup />
-            </Protectroute>
+            </ProtectRoute>
           }
         />
         <Route
           path="/"
           element={
-            <Privateroute>
+            <PrivateRoute>
               <Home />
-            </Privateroute>
+            </PrivateRoute>
           }
         />
       </Routes>

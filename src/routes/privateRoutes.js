@@ -1,12 +1,12 @@
 import { Navigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const Privateroute = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const auth = sessionStorage.token;
   if (!auth) {
-    return <Navigate to="/log-in" replace />;
+    return <Navigate to="/login" replace />;
   }
   return children;
 };
 
-export default Privateroute;
+export default PrivateRoute;
