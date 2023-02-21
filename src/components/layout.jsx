@@ -6,7 +6,7 @@ import Formlogin from './login/formLogin';
 import PrivateRoute from '../routes/privateRoutes';
 import Formsignup from './sign-up/formSignUp';
 import './_layout.scss';
-import ProtectRoute from '../routes/protectRoutes';
+import ProtectedRoute from '../routes/protectedRoutes';
 
 const Layout = () => {
   return (
@@ -16,17 +16,17 @@ const Layout = () => {
         <Route
           path="/login"
           element={
-            <ProtectRoute>
+            <ProtectedRoute>
               <Formlogin />
-            </ProtectRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/sign-up"
           element={
-            <ProtectRoute>
+            <ProtectedRoute>
               <Formsignup />
-            </ProtectRoute>
+            </ProtectedRoute>
           }
         />
         <Route
