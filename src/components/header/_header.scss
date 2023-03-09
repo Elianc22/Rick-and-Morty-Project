@@ -41,9 +41,37 @@ $headerHeight: 75px;
             cursor: pointer;
         }
     }
+    
+}
+
+.header-auth {
+    width: 100%;
+    height: $headerHeight;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+    position: fixed;
+    top: 0;
+    background-color: rgba(3, 31, 5, 0.616);
+
+
+    .header-img-container {
+        height: 100%;
+    }
+
+    .header-img {
+        height: 100%;
+    }
 
     .header-user {
-        background-color: red;
+        color: #e4eed7;
+        font-weight: bold;
+        font-size: 20px;
+        display: flex;
+        
+        .header-user-icon {
+            padding-right: 5px;
+        }
     }
-    
 }

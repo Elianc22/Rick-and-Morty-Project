@@ -6,11 +6,14 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApiProvider } from './components/context/contextApi';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <ApiProvider>
+      <App />
+    </ApiProvider>
   </BrowserRouter>
 );
 

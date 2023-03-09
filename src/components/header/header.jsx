@@ -3,14 +3,15 @@ import './_header.scss';
 import HeaderLogo from '../commons/headerLogo';
 import HeaderAuth from './headerAuth';
 import HeaderLinks from './headerLinks';
+import { useGlobalState } from '../context/contextApi';
 
 const Header = () => {
-  const headerLogged = sessionStorage.token;
+  const { token } = useGlobalState();
 
   return (
-    <header className="header">
+    <header className={token ? 'header-auth' : 'header'}>
       <HeaderLogo />
-      {headerLogged ? <HeaderAuth /> : <HeaderLinks />}
+      {token ? <HeaderAuth /> : <HeaderLinks />}
     </header>
   );
 };
