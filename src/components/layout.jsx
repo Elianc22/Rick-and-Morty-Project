@@ -21,7 +21,7 @@ const Layout = () => {
       }
     };
     handleFetchUser();
-  }, []);
+  }, [token]);
   return (
     <div className="layout-container">
       <Header />

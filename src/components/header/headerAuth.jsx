@@ -6,9 +6,9 @@ const HeaderAuth = () => {
   return (
     <div className="header-user">
       <div className="header-user-icon">
-        <i className="bi bi-person-circle"></i>
+        <i className="bi bi-person-circle" />
       </div>
-      <div>{`Welcome, ${userData.fullname}!`}</div>
+      {userData.fullname && <div>Welcome, {userData.fullname}</div>}
     </div>
   );
 };
