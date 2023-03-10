@@ -9,6 +9,7 @@ import { Errors } from '../commons/erros';
 import { Input } from '../commons/input';
 import logIn from '../../services/apiLogin';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalState } from '../context/contextApi';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -19,6 +20,7 @@ const Formlogin = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [apiError, setApiError] = useState(false);
   const navigate = useNavigate();
+  const { setToken } = useGlobalState();
 
   const initialCredentials = {
     email: '',
@@ -42,6 +44,7 @@ const Formlogin = () => {
             if (responseApi.error) {
               setApiError(responseApi.error);
             } else {
+              setToken(sessionStorage.token);
               return navigate('/');
             }
           }}>
