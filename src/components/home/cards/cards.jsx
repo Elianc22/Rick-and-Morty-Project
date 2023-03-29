@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import '../_home.scss';
+import { Death, Alive, Unknown } from './cardsStatus';
 
 function Cards({ card }) {
   return (
@@ -7,11 +8,12 @@ function Cards({ card }) {
       <div>
         {(() => {
           if (card.status === 'Dead') {
-            return <p className="position-absolute badge bg-danger cards-status">{card.status}</p>;
+            return <Death card={card} />;
           } else if (card.status === 'Alive') {
-            return <p className="position-absolute badge bg-success cards-status">{card.status}</p>;
+            return <Alive card={card} />;
+          } else if (card.status === 'unknown') {
+            return <Unknown card={card} />;
           }
-          <p className="position-absolute badge bg-secondary cards-status">{card.status}</p>;
         })()}
         <img
           className="img-fluid rounded-circle image mb-3 mt-1"

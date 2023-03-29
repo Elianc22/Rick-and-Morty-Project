@@ -9,8 +9,8 @@ import Search from '../search/searchFilter';
 
 const CardsList = () => {
   const [page, setPage] = useState(0);
-  // const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
+  const [error, setError] = useState([]);
   const [infoData, setInfoData] = useState([]);
   const { cardsData, setCardsData, token } = useGlobalState();
 
@@ -18,12 +18,21 @@ const CardsList = () => {
     const handleFetchCards = async () => {
       if (token) {
         const cardData = await apiFetchCards(`${page}`, `${search}`, sessionStorage.token);
-        if (cardData.error) {
-          setCardsData(cardData.error);
-        } else {
-          setCardsData(cardData.results);
-          setInfoData(cardData.info);
-        }
+        setCardsData(cardData.results);
+        setInfoData(cardData.info);
+        setError(cardData.error);
+        // try {
+        //   setCardsData(cardData.results);
+        //   setInfoData(cardData.info);
+        // } catch (error) {
+        //   setCardsData(cardsData.error);
+        // }
+        // if (cardData.error) {
+        //   setCardsData(cardData.error);
+        // } else {
+        //   setCardsData(cardData.results);
+        //   setInfoData(cardData.info);
+        // }
       }
     };
     handleFetchCards();
@@ -32,9 +41,9 @@ const CardsList = () => {
   return (
     <div>
       <Search setPage={setPage} setSearch={setSearch} />
-      {cardsData == 'There is nothing here' ? (
+      {!cardsData ? (
         <div className="container-error">
-          <h2>{cardsData}</h2>
+          <h2>{error}</h2>
         </div>
       ) : (
         <>
