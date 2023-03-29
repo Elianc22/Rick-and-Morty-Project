@@ -9,10 +9,9 @@ import './_layout.scss';
 import ProtectedRoute from '../routes/protectedRoutes';
 import { useGlobalState } from './context/contextApi';
 import apiFetchUser from '../services/apiFetchUser';
-import apiFetchCards from '../services/apiFetchCards';
 
 const Layout = () => {
-  const { token, setUserData, setCardData } = useGlobalState();
+  const { token, setUserData } = useGlobalState();
 
   useEffect(() => {
     const handleFetchUser = async () => {
@@ -24,15 +23,6 @@ const Layout = () => {
     handleFetchUser();
   }, [token]);
 
-  useEffect(() => {
-    const handleFetchCards = async () => {
-      if (token) {
-        const cardsData = await apiFetchCards('character', sessionStorage.token);
-        setCardData(cardsData.results);
-      }
-    };
-    handleFetchCards();
-  }, [token]);
   return (
     <div className="layout-container">
       <Header />

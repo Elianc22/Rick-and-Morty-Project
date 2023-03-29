@@ -1,8 +1,8 @@
-$headerHeight: 75px;
+@use '../../styles/baseStyle';
 
 .header {
     width: 100%;
-    height: $headerHeight;
+    height: baseStyle.$headerHeight;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,15 +46,15 @@ $headerHeight: 75px;
 
 .header-auth {
     width: 100%;
-    height: $headerHeight;
+    height: baseStyle.$headerHeight;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 30px;
     position: fixed;
     top: 0;
-    background-color: rgba(3, 31, 5, 0.616);
-
+    background-color: #2C452F;
+    z-index: 4;
 
     .header-img-container, .header-img {
         height: 100%;

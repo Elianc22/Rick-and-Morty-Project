@@ -8,10 +8,18 @@ const Logged = sessionStorage.token;
 export const ApiProvider = ({ children }) => {
   const [token, setToken] = useState(Logged);
   const [userData, setUserData] = useState({});
-  const [cardData, setCardData] = useState({});
+  const [cardsData, setCardsData] = useState(null);
 
   return (
-    <ContextApi.Provider value={{ token, setToken, userData, setUserData, cardData, setCardData }}>
+    <ContextApi.Provider
+      value={{
+        token,
+        setToken,
+        userData,
+        setUserData,
+        cardsData,
+        setCardsData
+      }}>
       {children}
     </ContextApi.Provider>
   );

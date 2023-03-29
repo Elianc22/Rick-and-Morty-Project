@@ -1,20 +1,10 @@
-import React from 'react';
-import { useGlobalState } from '../context/contextApi';
+import CardsList from './cards/cardsList';
+import './_home.scss';
 
 const Home = () => {
-  const { cardData } = useGlobalState();
-
   return (
-    <div>
-      {cardData &&
-        cardData.map((cardData) => {
-          return (
-            <div key={cardData.id}>
-              <div>{cardData.name}</div>
-              <img src={cardData.image} />
-            </div>
-          );
-        })}
+    <div className="home">
+      <CardsList />
     </div>
   );
 };
