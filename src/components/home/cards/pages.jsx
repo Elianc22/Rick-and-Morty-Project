@@ -6,7 +6,7 @@ const Pages = ({ page, infoData, setPage }) => {
   return (
     <ReactPaginate
       className="pagination justify-content-center gap-2 my-3 mb-5"
-      forcePage={page === 1 ? 0 : page - 1}
+      forcePage={page == 1 ? 0 : page - 1}
       previousLinkClassName="text-white text-decoration-none"
       nextLinkClassName="text-white text-decoration-none"
       previousLabel="Prev"

@@ -21,18 +21,6 @@ const CardsList = () => {
         setCardsData(cardData.results);
         setInfoData(cardData.info);
         setError(cardData.error);
-        // try {
-        //   setCardsData(cardData.results);
-        //   setInfoData(cardData.info);
-        // } catch (error) {
-        //   setCardsData(cardsData.error);
-        // }
-        // if (cardData.error) {
-        //   setCardsData(cardData.error);
-        // } else {
-        //   setCardsData(cardData.results);
-        //   setInfoData(cardData.info);
-        // }
       }
     };
     handleFetchCards();

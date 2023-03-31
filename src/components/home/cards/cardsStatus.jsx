@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import '../_home.scss';
 
-export function Death({ card }) {
-  return <p className="position-absolute badge bg-danger cards-status">{card.status}</p>;
+function Status({ status }) {
+  const badgeType = {
+    Alive: 'bg-success',
+    Dead: 'bg-danger',
+    unknown: 'bg-secondary'
+  };
+
+  return <p className={`position-absolute badge ${badgeType[status]} cards-status`}>{status}</p>;
 }
 
-export function Alive({ card }) {
-  return <p className="position-absolute badge bg-success cards-status">{card.status}</p>;
-}
-
-export function Unknown({ card }) {
-  return <p className="position-absolute badge bg-secondary cards-status">{card.status}</p>;
-}
+export default Status;

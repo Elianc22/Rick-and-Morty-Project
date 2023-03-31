@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import '../_home.scss';
-import { Death, Alive, Unknown } from './cardsStatus';
+import Status from './cardsStatus';
 
 function Cards({ card }) {
   return (
@@ -8,11 +8,11 @@ function Cards({ card }) {
       <div>
         {(() => {
           if (card.status === 'Dead') {
-            return <Death card={card} />;
+            return <Status status={card.status} />;
           } else if (card.status === 'Alive') {
-            return <Alive card={card} />;
+            return <Status status={card.status} />;
           } else if (card.status === 'unknown') {
-            return <Unknown card={card} />;
+            return <Status status={card.status} />;
           }
         })()}
         <img
