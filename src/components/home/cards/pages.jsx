@@ -1,8 +1,11 @@
 import ReactPaginate from 'react-paginate';
+import { useGlobalState } from '../../context/contextApi';
 import '../_home.scss';
 
 /* eslint-disable react/prop-types */
-const Pages = ({ page, infoData, setPage }) => {
+const Pages = ({ infoData }) => {
+  const { page, setPage } = useGlobalState();
+
   return (
     <ReactPaginate
       className="pagination justify-content-center gap-2 my-3 mb-5"

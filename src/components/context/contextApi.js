@@ -9,6 +9,8 @@ export const ApiProvider = ({ children }) => {
   const [token, setToken] = useState(Logged);
   const [userData, setUserData] = useState({});
   const [cardsData, setCardsData] = useState([]);
+  const [page, setPage] = useState(0);
+  const [search, setSearch] = useState('');
 
   return (
     <ContextApi.Provider
@@ -18,7 +20,11 @@ export const ApiProvider = ({ children }) => {
         userData,
         setUserData,
         cardsData,
-        setCardsData
+        setCardsData,
+        page,
+        setPage,
+        search,
+        setSearch
       }}>
       {children}
     </ContextApi.Provider>

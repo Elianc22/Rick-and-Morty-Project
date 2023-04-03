@@ -4,15 +4,12 @@ import { useGlobalState } from '../../context/contextApi';
 import Cards from './cards';
 import Pages from './pages';
 import '../_home.scss';
-import FiltersHome from '../filters/filtersHome';
 import Search from '../search/searchFilter';
 
 const CardsList = () => {
-  const [page, setPage] = useState(0);
-  const [search, setSearch] = useState('');
   const [error, setError] = useState([]);
   const [infoData, setInfoData] = useState([]);
-  const { cardsData, setCardsData, token } = useGlobalState();
+  const { cardsData, setCardsData, token, page, search } = useGlobalState();
 
   useEffect(() => {
     const handleFetchCards = async () => {
@@ -28,7 +25,7 @@ const CardsList = () => {
 
   return (
     <div>
-      <Search setPage={setPage} setSearch={setSearch} />
+      <Search />
       {!cardsData ? (
         <div className="container-error">
           <h2>{error}</h2>
@@ -36,7 +33,6 @@ const CardsList = () => {
       ) : (
         <>
           <div className="container-home">
-            <FiltersHome />
             <div className="container cards">
               {cardsData &&
                 cardsData.map((card) => {
@@ -48,7 +44,7 @@ const CardsList = () => {
                 })}
             </div>
           </div>
-          <Pages infoData={infoData} page={page} setPage={setPage} />
+          <Pages infoData={infoData} />
         </>
       )}
     </div>

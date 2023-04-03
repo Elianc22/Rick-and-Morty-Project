@@ -54,7 +54,7 @@
     position: fixed;
     top: 0;
     background-color: #2C452F;
-    z-index: 4;
+    z-index: baseStyle.$superIndex;
 
     .header-img-container, .header-img {
         height: 100%;

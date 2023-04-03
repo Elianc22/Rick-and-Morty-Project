@@ -6,15 +6,7 @@ function Cards({ card }) {
   return (
     <div>
       <div>
-        {(() => {
-          if (card.status === 'Dead') {
-            return <Status status={card.status} />;
-          } else if (card.status === 'Alive') {
-            return <Status status={card.status} />;
-          } else if (card.status === 'unknown') {
-            return <Status status={card.status} />;
-          }
-        })()}
+        <Status status={card.status} />
         <img
           className="img-fluid rounded-circle image mb-3 mt-1"
           src={card.image}

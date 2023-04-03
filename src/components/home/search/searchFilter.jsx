@@ -1,8 +1,10 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import { useGlobalState } from '../../context/contextApi';
 import './_searchFilter.scss';
 
-const Search = ({ setSearch, setPage }) => {
+const Search = () => {
+  const { setSearch, setPage } = useGlobalState();
+
   return (
     <div className="searchBar">
       <form>
