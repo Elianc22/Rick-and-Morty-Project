@@ -1,3 +1,9 @@
+$headerHeight: 75px;
+$indexBase: 100;
+$indexMedium: 500;
+$indexMax: 1000;
+$superIndex: 9999;
+
 @mixin base-center() {
     display: flex;
     justify-content: center;

@@ -1,7 +1,12 @@
-import React from 'react';
+import CardsList from './cards/cardsList';
+import './_home.scss';
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div className="home">
+      <CardsList />
+    </div>
+  );
 };
 
 export default Home;
