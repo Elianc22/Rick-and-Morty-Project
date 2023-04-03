@@ -15,7 +15,7 @@ const Search = () => {
             setSearch(e.target.value);
           }}
           type="text"
-          placeholder="Buscar personaje"
+          placeholder="Search Character"
         />
       </form>
     </div>

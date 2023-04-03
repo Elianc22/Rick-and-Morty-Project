@@ -1,7 +1,7 @@
 $headerHeight: 75px;
-$indexBase: 2;
-$indexMedium: 3;
-$indexMax: 4;
+$indexBase: 100;
+$indexMedium: 500;
+$indexMax: 1000;
 $superIndex: 9999;
 
 @mixin base-center() {
