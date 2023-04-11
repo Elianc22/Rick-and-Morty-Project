@@ -6,6 +6,9 @@ function Cards({ card }) {
   return (
     <div>
       <div>
+        <div className="fav-icon">
+          <i className="bi bi-heart fs-5" />
+        </div>
         <Status status={card.status} />
         <img
           className="img-fluid rounded-circle image mb-3 mt-1"

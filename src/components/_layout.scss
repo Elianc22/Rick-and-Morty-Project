@@ -5,3 +5,8 @@
     flex-direction: column;
     height: 100%;
 }
+
+.layout-container-home {
+    @include baseStyle.base-center();
+    flex-direction: column;
+}

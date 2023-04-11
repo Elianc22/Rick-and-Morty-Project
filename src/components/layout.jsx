@@ -24,7 +24,7 @@ const Layout = () => {
   }, [token]);
 
   return (
-    <div className="layout-container">
+    <div className={`layout-container${!token ? '' : '-home'}`}>
       <Header />
       <Routes>
         <Route
