@@ -23,12 +23,23 @@
                 font-size: 17px;
             }
 
-            .fav-icon {
+            .fav-icon-container {
                 width: 30px;
                 height: 25px;
                 position: absolute;
                 right: 5px;
                 top: 5px;
+
+                .fav-icon-true {
+                    color: rgb(248, 64, 64);
+                    cursor: pointer;
+                    font-size: 20px;
+                }
+
+                .fav-icon-false {
+                    cursor: pointer;
+                    font-size: 20px;
+                }
             }
     
             .image {

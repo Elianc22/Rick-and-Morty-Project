@@ -9,6 +9,7 @@ import './_layout.scss';
 import ProtectedRoute from '../routes/protectedRoutes';
 import { useGlobalState } from './context/contextApi';
 import apiFetchUser from '../services/apiFetchUser';
+import { FavoritesProvider } from './context/contextFavorites';
 
 const Layout = () => {
   const { token, setUserData } = useGlobalState();
@@ -47,7 +48,9 @@ const Layout = () => {
           path="/"
           element={
             <PrivateRoute>
-              <Home />
+              <FavoritesProvider>
+                <Home />
+              </FavoritesProvider>
             </PrivateRoute>
           }
         />
