@@ -7,38 +7,22 @@ import '../_home.scss';
 import Search from '../search/searchFilter';
 import Spinner from 'react-bootstrap/Spinner';
 import { useFavorites } from '../../context/contextFavorites';
+import FavoritePage from './favPage';
 
 const CardsList = () => {
   const [error, setError] = useState();
   const [infoData, setInfoData] = useState([]);
-  const { cardsData, setCardsData, token, page, search, loading, setLoading } = useGlobalState();
+  const { cardsData, setCardsData, token, page, search, loading, setLoading, isPageFav } =
+    useGlobalState();
   const { favorites, setFavorites } = useFavorites();
-  const [icon, setIcon] = useState();
-  // const [isFavorites, setIsFavorites] = useState(false);
 
   const handleToggleFavorites = (event) => {
-    const isFavorite = favorites.filter((fav) => {
-      console.log('Favorites: ', +event.target.parentElement.parentElement.id);
-      console.log('Fav: ', fav.id == +event.target.parentElement.parentElement.id);
-      fav.id == +event.target.parentElement.parentElement.id;
-    });
-    console.log('IsFav: ', isFavorite);
+    const elementID = +event.target.parentElement.parentElement.id;
+    const isFavorite = favorites.filter((fav) => fav.id == elementID);
     if (isFavorite.length > 0) {
-      setIcon(false);
-      console.log(
-        favorites.filter((element) => element.id !== +event.target.parentElement.parentElement.id)
-      );
-      setFavorites(
-        favorites.filter((element) => element.id !== +event.target.parentElement.parentElement.id)
-      );
+      setFavorites(favorites.filter((element) => element.id !== elementID));
     } else {
-      setIcon(true);
-      setFavorites([
-        ...favorites,
-        cardsData.filter(
-          (element) => element.id === +event.target.parentElement.parentElement.id
-        )[0]
-      ]);
+      setFavorites([...favorites, cardsData.filter((element) => element.id === elementID)[0]]);
     }
   };
 
@@ -62,36 +46,56 @@ const CardsList = () => {
 
   return (
     <div>
-      <Search />
+      {isPageFav ? <h1>Favorites</h1> : <Search />}
       {loading ? (
         <Spinner animation="border" role="status" size="sm" className="mt-0" />
       ) : (
         <>
-          {error ? (
-            <div className="container-error">
-              <h2>{error}</h2>
+          {isPageFav ? (
+            <div className="container-home">
+              <div className="container cards">
+                {favorites.map((cardFav) => {
+                  return (
+                    <div id={cardFav.id} key={cardFav.id} className="card cards-container">
+                      <FavoritePage
+                        id={cardFav.id}
+                        key={cardFav.id}
+                        onClickFav={handleToggleFavorites}
+                        cardFav={cardFav}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           ) : (
             <>
-              <div className="container-home">
-                <div className="container cards">
-                  {cardsData &&
-                    cardsData.map((card) => {
-                      return (
-                        <div id={card.id} key={card.id} className="card cards-container">
-                          <Cards
-                            id={card.id}
-                            key={card.id}
-                            icon={icon}
-                            onClickFav={handleToggleFavorites}
-                            card={card}
-                          />
-                        </div>
-                      );
-                    })}
+              {error ? (
+                <div className="container-error">
+                  <h2>{error}</h2>
                 </div>
-              </div>
-              <Pages infoData={infoData} />
+              ) : (
+                <>
+                  <div className="container-home">
+                    <div className="container cards">
+                      {cardsData &&
+                        cardsData.map((card) => {
+                          return (
+                            <div id={card.id} key={card.id} className="card cards-container">
+                              <Cards
+                                id={card.id}
+                                key={card.id}
+                                onClickFav={handleToggleFavorites}
+                                card={card}
+                              />
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                  <Pages infoData={infoData} />
+                </>
+              )}
             </>
           )}
         </>

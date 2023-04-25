@@ -2,12 +2,12 @@ import { useGlobalState } from '../context/contextApi';
 import { isMobile } from 'react-device-detect';
 
 const HeaderAuth = () => {
-  const { userData } = useGlobalState();
+  const { userData, setIsPageFav } = useGlobalState();
 
   return (
     <>
       <div className={`header-user${isMobile ? '' : '-desk'}`}>
-        <span className="header-fav">
+        <span onClick={() => setIsPageFav(true)} className="header-fav">
           <i className="bi bi-heart-fill header-icon" />
           Favourites
         </span>

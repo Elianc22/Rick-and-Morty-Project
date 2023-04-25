@@ -12,6 +12,7 @@ export const ApiProvider = ({ children }) => {
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isPageFav, setIsPageFav] = useState(false);
 
   return (
     <ContextApi.Provider
@@ -27,7 +28,9 @@ export const ApiProvider = ({ children }) => {
         search,
         setSearch,
         loading,
-        setLoading
+        setLoading,
+        isPageFav,
+        setIsPageFav
       }}>
       {children}
     </ContextApi.Provider>
