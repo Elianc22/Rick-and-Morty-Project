@@ -1,15 +1,18 @@
+import { Link } from 'react-router-dom';
 import { useGlobalState } from '../context/contextApi';
 import { isMobile } from 'react-device-detect';
 
 const HeaderAuth = () => {
-  const { userData, setIsPageFav } = useGlobalState();
+  const { userData } = useGlobalState();
 
   return (
     <>
       <div className={`header-user${isMobile ? '' : '-desk'}`}>
-        <span onClick={() => setIsPageFav(true)} className="header-fav">
+        <span className="header-fav">
           <i className="bi bi-heart-fill header-icon" />
-          Favourites
+          <Link to={'/favorites'} className="link-favorites">
+            Favourites
+          </Link>
         </span>
         {isMobile ? (
           <i className="bi bi-person-circle header-icon" />

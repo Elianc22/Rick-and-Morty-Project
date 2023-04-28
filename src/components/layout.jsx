@@ -10,6 +10,7 @@ import ProtectedRoute from '../routes/protectedRoutes';
 import { useGlobalState } from './context/contextApi';
 import apiFetchUser from '../services/apiFetchUser';
 import { FavoritesProvider } from './context/contextFavorites';
+import Favorites from './home-favorite/Favorites';
 
 const Layout = () => {
   const { token, setUserData } = useGlobalState();
@@ -29,7 +30,7 @@ const Layout = () => {
       <Header />
       <Routes>
         <Route
-          path="/login"
+          path="/"
           element={
             <ProtectedRoute>
               <Formlogin />
@@ -45,11 +46,21 @@ const Layout = () => {
           }
         />
         <Route
-          path="/"
+          path="/home"
           element={
             <PrivateRoute>
               <FavoritesProvider>
                 <Home />
+              </FavoritesProvider>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <FavoritesProvider>
+                <Favorites />
               </FavoritesProvider>
             </PrivateRoute>
           }
