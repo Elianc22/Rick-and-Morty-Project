@@ -11,7 +11,7 @@ const HeaderAuth = () => {
         <span className="header-fav">
           <i className="bi bi-heart-fill header-icon" />
           <Link to={'/favorites'} className="link-favorites">
-            Favourites
+            Favorites
           </Link>
         </span>
         {isMobile ? (

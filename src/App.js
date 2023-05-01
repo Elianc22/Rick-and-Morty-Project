@@ -11,10 +11,10 @@ function App() {
     return location.pathname.includes('/favorites');
   };
 
-  const classNameFav = isFavUrl() ? '-desk-fav' : '-desk';
+  const favPageStyle = isFavUrl() ? '-desk-fav' : '-desk';
 
   return (
-    <div className={`App${isMobile ? '' : classNameFav}`}>
+    <div className={`App${isMobile ? '' : favPageStyle}`}>
       <Layout />
     </div>
   );

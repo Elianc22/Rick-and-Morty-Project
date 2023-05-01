@@ -20,7 +20,7 @@ const Home = () => {
         if (apiResult.error) {
           setError(apiResult.error);
         } else {
-          setError(undefined);
+          setError(null);
           setCardsData(apiResult.results);
           setInfoData(apiResult.info);
         }
