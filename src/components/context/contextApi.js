@@ -11,6 +11,7 @@ export const ApiProvider = ({ children }) => {
   const [cardsData, setCardsData] = useState([]);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false);
 
   return (
     <ContextApi.Provider
@@ -24,7 +25,9 @@ export const ApiProvider = ({ children }) => {
         page,
         setPage,
         search,
-        setSearch
+        setSearch,
+        loading,
+        setLoading
       }}>
       {children}
     </ContextApi.Provider>

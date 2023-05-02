@@ -9,6 +9,8 @@ import './_layout.scss';
 import ProtectedRoute from '../routes/protectedRoutes';
 import { useGlobalState } from './context/contextApi';
 import apiFetchUser from '../services/apiFetchUser';
+import { FavoritesProvider } from './context/contextFavorites';
+import Favorites from './home-favorite/Favorites';
 
 const Layout = () => {
   const { token, setUserData } = useGlobalState();
@@ -24,11 +26,11 @@ const Layout = () => {
   }, [token]);
 
   return (
-    <div className="layout-container">
+    <div className={`layout-container${!token ? '' : '-home'}`}>
       <Header />
       <Routes>
         <Route
-          path="/login"
+          path="/"
           element={
             <ProtectedRoute>
               <Formlogin />
@@ -44,10 +46,22 @@ const Layout = () => {
           }
         />
         <Route
-          path="/"
+          path="/home"
           element={
             <PrivateRoute>
-              <Home />
+              <FavoritesProvider>
+                <Home />
+              </FavoritesProvider>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <FavoritesProvider>
+                <Favorites />
+              </FavoritesProvider>
             </PrivateRoute>
           }
         />

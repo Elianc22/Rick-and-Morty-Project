@@ -45,7 +45,7 @@ const Formlogin = () => {
               setApiError(responseApi.error);
             } else {
               setToken(sessionStorage.token);
-              return navigate('/');
+              return navigate('/home');
             }
           }}>
           {({ errors, isSubmitting }) => (

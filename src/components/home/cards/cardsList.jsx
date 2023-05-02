@@ -1,50 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import apiFetchCards from '../../../services/apiFetchCards';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { useGlobalState } from '../../context/contextApi';
 import Cards from './cards';
-import Pages from './pages';
 import '../_home.scss';
-import Search from '../search/searchFilter';
+import Spinner from 'react-bootstrap/Spinner';
 
-const CardsList = () => {
-  const [error, setError] = useState([]);
-  const [infoData, setInfoData] = useState([]);
-  const { cardsData, setCardsData, token, page, search } = useGlobalState();
-
-  useEffect(() => {
-    const handleFetchCards = async () => {
-      if (token) {
-        const cardData = await apiFetchCards(`${page}`, `${search}`, sessionStorage.token);
-        setCardsData(cardData.results);
-        setInfoData(cardData.info);
-        setError(cardData.error);
-      }
-    };
-    handleFetchCards();
-  }, [token, page, search]);
+// eslint-disable-next-line react/prop-types
+const CardsList = ({ cards, error }) => {
+  const { loading } = useGlobalState();
 
   return (
     <div>
-      <Search />
-      {!cardsData ? (
-        <div className="container-error">
-          <h2>{error}</h2>
-        </div>
+      {loading ? (
+        <Spinner animation="border" role="status" size="sm" className="mt-0" />
       ) : (
         <>
-          <div className="container-home">
-            <div className="container cards">
-              {cardsData &&
-                cardsData.map((card) => {
-                  return (
-                    <div key={card.id} className="card cards-container">
-                      <Cards card={card} />
-                    </div>
-                  );
-                })}
+          {error ? (
+            <div className="container-error">
+              <h2>{error}</h2>
             </div>
-          </div>
-          <Pages infoData={infoData} />
+          ) : (
+            <>
+              <div className="container-home">
+                <div className="container cards">
+                  {cards &&
+                    cards.map((card) => {
+                      return (
+                        <div id={card.id} key={card.id} className="card cards-container">
+                          <Cards id={card.id} key={card.id} card={card} />
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            </>
+          )}
         </>
       )}
     </div>
