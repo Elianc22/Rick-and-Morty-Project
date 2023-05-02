@@ -4,8 +4,8 @@ import './_Favorites.scss';
 
 const Favorites = () => {
   const { favorites } = useFavorites();
-  const error = (
-    <div className="error-fav">
+  const emptyListMessage = (
+    <div className="empty-fav">
       <h2>There is nothing here</h2>
     </div>
   );
@@ -13,7 +13,7 @@ const Favorites = () => {
   return (
     <div className="favorite">
       <h1>Favorites List</h1>
-      {favorites == 0 ? error : <CardsList cards={favorites} />}
+      {favorites.length > 0 ? <CardsList cards={favorites} /> : emptyListMessage}
     </div>
   );
 };
