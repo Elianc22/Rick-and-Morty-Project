@@ -43,7 +43,7 @@ const Formsignup = () => {
             if (responseApi.error) {
               setApiError(responseApi.error);
             } else {
-              navigate('/home');
+              navigate('/');
             }
           }}>
           {({ errors, isSubmitting }) => (
